@@ -1,5 +1,6 @@
 import 'package:camera_deep_ar/camera_deep_ar.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,9 +51,9 @@ class _MyAppState extends State<MyApp> {
                   setState(() {});
                 },
                 androidLicenceKey:
-                    "3b58c448bd650192e7c53d965cfe5dc1c341d2568b663a3962b7517c4ac6eeed0ba1fb2afe491a4b",
+                    "80c12c2018d6972576d109bc26f547ca718fc7f7870367278f14b670b37f1ac459dbd4e15bbf2ac6",
                 iosLicenceKey:
-                    "53618212114fc16bbd7499c0c04c2ca11a4eed188dc20ed62a7f7eec02b41cb34d638e72945a6bf6",
+                    "f33def7159686a1e45cb6c2989de1e3ed94ce1fcf4ffa476ceaa4b4b80657f51f6f08d15f37c0ccd",
                 cameraDeepArCallback: (c) async {
                   cameraDeepArController = c;
                   setState(() {});
@@ -74,6 +75,29 @@ class _MyAppState extends State<MyApp> {
                     SizedBox(
                       height: 20,
                     ),
+                    // Image.file(
+                    //   // File(
+                    //   //   _platformVersion.replaceAll(
+                    //   //       "Image Taken @ file:///", ""),
+                    //   // ),
+                    //   File(
+                    //     _platformVersion.replaceAll(
+                    //         "Video Recorded @ file:///", ""),
+                    //   ),
+                    //   height: 120,
+                    // ),
+                    ElevatedButton(
+                        onPressed: () async {
+                          await GallerySaver.saveVideo(
+                            _platformVersion.replaceAll(
+                                "Video Recorded @ file:///", ""),
+                          );
+                          // await GallerySaver.saveImage(
+                          //   _platformVersion.replaceAll(
+                          //       "Video Recorded @ file:///", ""),
+                          // );
+                        },
+                        child: Text("save it")),
                     Row(
                       children: [
                         Expanded(
